@@ -39,7 +39,7 @@ haversineMaybe (Just val1) (Just val2) = Just (haversine val1 val2)
 
 printDistance :: Maybe Double -> IO()
 printDistance Nothing = putStrLn "Error,invalid entry"
-printDistance (Just distance) = putStrLn (show distance ++ "Miles")
+printDistance (Just distance) = putStrLn (show distance ++ " Miles")
 
 main :: IO()
 main = do
