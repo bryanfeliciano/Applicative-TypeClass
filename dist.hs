@@ -30,8 +30,14 @@ haversine coords1 coords2 = earthRadius * c
         c = 2 * atan2 (sqrt a) (sqrt (1 - a))
         earthRadius = 3961.0
 
+haversineMaybe :: Maybe LatLong -> Maybe LatLong -> Maybe Double
+haversineMaybe Nothing _ = Nothing
+haversineMaybe _ Nothing = Nothing
+haversineMaybe (Just val1) (Just val2) = Just (haversine val1 val2)
+
 -- Printing your result -- 
 
 printDistance :: Maybe Double -> IO()
 printDistance Nothing = putStrLn "Error,invalid entry"
 printDistance (Just distance) = putStrLn (show distance ++ "Miles")
+
