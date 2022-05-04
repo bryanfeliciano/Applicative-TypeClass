@@ -41,3 +41,13 @@ printDistance :: Maybe Double -> IO()
 printDistance Nothing = putStrLn "Error,invalid entry"
 printDistance (Just distance) = putStrLn (show distance ++ "Miles")
 
+main :: IO()
+main = do
+    putStrLn "Enter starting city name: "
+    startingInput <- getLine
+    let startingCity = Map.lookup startingInput locationDB
+    putStrLn "Enter Destination here: "
+    destInput <- getLine
+    let destCity = Map.lookup destInput locationDB
+    let distance = haversine <$> startingCity <*> destCity
+    printDistance distance
